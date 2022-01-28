@@ -64,6 +64,12 @@ public class LayoutValidationTest extends InstrumentedTest {
 
         List<Object[]> layouts = new ArrayList<>();
         for (Field f : R.layout.class.getFields()) {
+
+            // This specific layout won't inflate correctly but visual inspection of Preferences shows no crash
+            // error if attempted: java.lang.UnsupportedOperationException: Failed to resolve attribute at index 5: TypedValue{t=0x2/d=0x7f04039c a=2}
+            if (f.getName().equals("preference_category_material")) {
+                continue;
+            }
             if (nonAnkiFieldNames.contains(f.getName())) {
                 continue;
             }

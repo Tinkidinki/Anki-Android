@@ -140,6 +140,8 @@ import com.ichi2.widget.WidgetStatus;
 
 import com.ichi2.utils.JSONException;
 
+import com.ichi2.anki.dialogs.FireMissileDialogFragment;
+
 import java.io.File;
 import java.util.List;
 import java.util.TreeMap;
@@ -274,6 +276,9 @@ public class DeckPicker extends NavigationDrawerActivity implements
 
 
     private void onDeckClick(View v, DeckSelectionType selectionType) {
+        FireMissileDialogFragment f = new FireMissileDialogFragment();
+        f.show(f.getChildFragmentManager(), "string");
+
         long deckId = (long) v.getTag();
         Timber.i("DeckPicker:: Selected deck with id %d", deckId);
         if (mFloatingActionMenu.isFABOpen()) {

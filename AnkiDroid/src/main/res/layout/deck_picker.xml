@@ -33,12 +33,12 @@
                         android:id="@+id/files"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_above="@id/today_stats_text_view"
                         android:clipToPadding="false"
                         android:drawSelectorOnTop="true"
                         android:fastScrollEnabled="true"
                         android:focusable="true"
                         android:paddingBottom="72dp"
-                        android:layout_above="@id/today_stats_text_view"
                         android:scrollbars="vertical" />
 
                     <com.ichi2.ui.FixedTextView

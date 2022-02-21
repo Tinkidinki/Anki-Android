@@ -34,7 +34,7 @@ class ClosableDrawerLayout : DrawerLayout {
     public override fun closeDrawers(peekingOnly: Boolean) {
         // TODO: This fails due to #7344 - tapping on the left side partially opens the menu and blocks the UI
         // permanently. I didn't work too hard on resolving this, but it didn't seem like a simple fix.
-        /*
+        /*android
         if (!mAnimationEnabled) {
             closeDrawer(GravityCompat.START, false);
         }

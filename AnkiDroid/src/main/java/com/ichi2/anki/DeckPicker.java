@@ -267,7 +267,8 @@ public class DeckPicker extends NavigationDrawerActivity implements
         }
     };
 
-    private final OnClickListener mDeckClickListener = v -> onDeckClick(v, DeckSelectionType.DEFAULT);
+    private final OnClickListener mDeckClickListener =
+            v -> onDeckClick(v, DeckSelectionType.DEFAULT);
 
     private final OnClickListener mCountsClickListener = v -> onDeckClick(v, DeckSelectionType.SHOW_STUDY_OPTIONS);
 

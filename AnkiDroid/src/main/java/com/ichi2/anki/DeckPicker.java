@@ -77,6 +77,7 @@ import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.ichi2.anki.CollectionHelper.CollectionIntegrityStorageCheck;
@@ -272,6 +273,10 @@ public class DeckPicker extends NavigationDrawerActivity implements
 
 
     private void onDeckClick(View v, DeckSelectionType selectionType) {
+        Context context = getApplicationContext();
+        Toast myToast = Toast.makeText(context, "Hi I'm Mahathi!", Toast.LENGTH_SHORT);
+        myToast.show();
+
         long deckId = (long) v.getTag();
         Timber.i("DeckPicker:: Selected deck with id %d", deckId);
         if (mFloatingActionMenu.isFABOpen()) {

@@ -56,6 +56,7 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.ichi2.anki.dialogs.CardBrowserMySearchesDialog;
@@ -142,6 +143,9 @@ public class CardBrowser extends NavigationDrawerActivity implements
         mDeckSpinnerSelection.initializeActionBarDeckSpinner(this.getSupportActionBar());
         mDeckSpinnerSelection.selectDeckById(deckId, true);
         selectDeckAndSave(deckId);
+        Toast myToast = Toast.makeText(getApplicationContext(), "Decks selected", Toast.LENGTH_SHORT);
+        myToast.show();
+        // This is what I think it is!
     }
 
 
@@ -670,6 +674,8 @@ public class CardBrowser extends NavigationDrawerActivity implements
         column1Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         cardsColumn1Spinner.setAdapter(column1Adapter);
         mColumn1Index = AnkiDroidApp.getSharedPrefs(getBaseContext()).getInt("cardBrowserColumn1", 0);
+
+        // This below method sets the first column of the browser based on whether one selects QUESTION or SORT FIELD!
         cardsColumn1Spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {

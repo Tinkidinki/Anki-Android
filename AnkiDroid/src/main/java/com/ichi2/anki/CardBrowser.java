@@ -684,6 +684,8 @@ public class CardBrowser extends NavigationDrawerActivity implements
                     mColumn1Index = pos;
                     AnkiDroidApp.getSharedPrefs(AnkiDroidApp.getInstance().getBaseContext()).edit()
                             .putInt("cardBrowserColumn1", mColumn1Index).apply();
+                    // my guess is fromMap contains the current headings of both columns. fromMap[0] will
+                    // contain the first column, and fromMap[1] will contain the second!
                     Column[] fromMap = mCardsAdapter.getFromMapping();
                     fromMap[0] = COLUMN1_KEYS[mColumn1Index];
                     mCardsAdapter.setFromMapping(fromMap);
@@ -2630,7 +2632,7 @@ public class CardBrowser extends NavigationDrawerActivity implements
     // This could be better: use a wrapper class PositionAware<T> to store the position so it's
     // no longer a responsibility of CardCache and we can guarantee it's consistent just by using this collection
     /** A position-aware collection to ensure consistency between the position of items and the collection */
-    public static class CardCollection<T extends PositionAware> implements Iterable<T> {
+    public static class aCardCollection<T extends PositionAware> implements Iterable<T> {
         private List<T> mWrapped = new ArrayList<>(0);
 
         public int size() {

@@ -29,7 +29,7 @@ jobs:
           git config --global user.name 'AnkiDroid Translations'
           git config --global user.email 'ankidroid@ankidroid.org'
           git checkout -b i18n_sync
-          git reset --hard origin/main
+          git reset --hard origin/update-localizations-issue-testing
         shell: bash
 
       - name: Credential Prep

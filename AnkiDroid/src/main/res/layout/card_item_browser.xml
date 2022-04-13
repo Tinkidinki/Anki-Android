@@ -25,7 +25,7 @@
         android:paddingEnd="3dp"
         android:paddingVertical="1dp"
         android:gravity="top"
-        android:maxLines="1"/>
+        android:maxLines="3"/>
 
     <View
         android:layout_width="0.5dp"
@@ -41,6 +41,6 @@
         android:paddingEnd="2dp"
         android:paddingVertical="1dp"
         android:gravity="top"
-        android:maxLines="1"/>
+        android:maxLines="3"/>
 
 </LinearLayout>

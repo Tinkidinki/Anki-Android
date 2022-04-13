@@ -1348,8 +1348,16 @@ public class CardBrowser extends NavigationDrawerActivity implements
             return true;
         } else if (itemId == R.id.action_edit_tags) {
             showEditTagsDialog();
+        } else if (itemId == R.id.action_truncate){
+            onTruncate();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    void onTruncate(){
+        MenuItem truncate = mActionBarMenu.findItem(R.id.action_truncate);
+        truncate.setTitle("Expand");
+
     }
 
 

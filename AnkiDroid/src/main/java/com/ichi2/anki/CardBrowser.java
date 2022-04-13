@@ -1356,7 +1356,11 @@ public class CardBrowser extends NavigationDrawerActivity implements
 
     void onTruncate(){
         MenuItem truncate = mActionBarMenu.findItem(R.id.action_truncate);
-        truncate.setTitle("Expand");
+        if (truncate.getTitle() == "Truncate") {
+            truncate.setTitle("Expand");
+        } else {
+            truncate.setTitle("Truncate");
+        }
 
     }
 

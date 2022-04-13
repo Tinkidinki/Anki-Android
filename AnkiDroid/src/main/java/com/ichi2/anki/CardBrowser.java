@@ -37,6 +37,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.widget.SearchView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Pair;
 import android.util.TypedValue;
 import android.view.KeyEvent;
@@ -91,6 +92,7 @@ import com.ichi2.libanki.Utils;
 import com.ichi2.libanki.Deck;
 import com.ichi2.themes.Themes;
 import com.ichi2.ui.CardBrowserSearchView;
+import com.ichi2.ui.FixedTextView;
 import com.ichi2.upgrade.Upgrade;
 import com.ichi2.utils.FunctionalInterfaces;
 import com.ichi2.utils.HandlerUtils;
@@ -738,6 +740,7 @@ public class CardBrowser extends NavigationDrawerActivity implements
         String sflCustomFont = preferences.getString("browserEditorFont", "");
         Column[] columnsContent = {COLUMN1_KEYS[mColumn1Index], COLUMN2_KEYS[mColumn2Index]};
         // make a new list adapter mapping the data in mCards to column1 and column2 of R.layout.card_item_browser
+        Timber.d("DEBUGGING = %d", R.id.card_sfld);
         mCardsAdapter = new MultiColumnListAdapter(
                 this,
                 R.layout.card_item_browser,
@@ -1356,9 +1359,17 @@ public class CardBrowser extends NavigationDrawerActivity implements
 
     void onTruncate(){
         MenuItem truncate = mActionBarMenu.findItem(R.id.action_truncate);
+        Timber.d("COLUMN 1 ID = %d", R.id.card_sfld);
+        FixedTextView column1 = findViewById(R.id.card_sfld);
+        FixedTextView column2 = findViewById(R.id.card_column2);
         if (truncate.getTitle() == "Truncate") {
+            column1.setMaxLines(3);
+            column2.setMaxLines(3);
             truncate.setTitle("Expand");
+
         } else {
+            column1.setMaxLines(Integer.MAX_VALUE);
+            column2.setMaxLines(Integer.MAX_VALUE);
             truncate.setTitle("Truncate");
         }
 

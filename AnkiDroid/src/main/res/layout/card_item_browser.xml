@@ -24,8 +24,7 @@
         android:paddingStart="3dp"
         android:paddingEnd="3dp"
         android:paddingVertical="1dp"
-        android:gravity="top"
-        android:maxLines="3"/>
+        android:gravity="top" />
 
     <View
         android:layout_width="0.5dp"
@@ -39,8 +38,6 @@
         android:layout_weight="1"
         android:paddingStart="4dp"
         android:paddingEnd="2dp"
-        android:paddingVertical="1dp"
-        android:gravity="top"
-        android:maxLines="3"/>
+        android:paddingVertical="1dp" />
 
 </LinearLayout>

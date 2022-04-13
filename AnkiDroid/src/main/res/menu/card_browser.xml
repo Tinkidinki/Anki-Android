@@ -88,6 +88,6 @@
         android:title="@string/card_browser_select_all"/>
     <item
         android:id="@+id/action_truncate"
-        android:title="Truncate" />
+        android:title="Expand" />
 
 </menu>

@@ -317,6 +317,7 @@ public class CardBrowser extends NavigationDrawerActivity implements
     private TextView mActionBarTitle;
     private boolean mReloadRequired = false;
     private boolean mInMultiSelectMode = false;
+    private boolean mIsTruncated = false;
     private final @NonNull Set<CardCache> mCheckedCards = Collections.synchronizedSet(new LinkedHashSet<>());
     private int mLastSelectedPosition;
     @Nullable
@@ -1360,16 +1361,12 @@ public class CardBrowser extends NavigationDrawerActivity implements
     void onTruncate(){
         MenuItem truncate = mActionBarMenu.findItem(R.id.action_truncate);
         Timber.d("COLUMN 1 ID = %d", R.id.card_sfld);
-        FixedTextView column1 = findViewById(R.id.card_sfld);
-        FixedTextView column2 = findViewById(R.id.card_column2);
         if (truncate.getTitle() == "Truncate") {
-            column1.setMaxLines(3);
-            column2.setMaxLines(3);
+            mIsTruncated = true;
             truncate.setTitle("Expand");
 
         } else {
-            column1.setMaxLines(Integer.MAX_VALUE);
-            column2.setMaxLines(Integer.MAX_VALUE);
+            mIsTruncated = false;
             truncate.setTitle("Truncate");
         }
 
@@ -2521,6 +2518,17 @@ public class CardBrowser extends NavigationDrawerActivity implements
             }
             // change bg color on check changed
             checkBox.setOnClickListener(view -> onCheck(position, v));
+
+            FixedTextView column1 = v.findViewById(R.id.card_sfld);
+            FixedTextView column2 = v.findViewById(R.id.card_column2);
+
+            if (mIsTruncated) {
+                column1.setMaxLines(4);
+                column2.setMaxLines(4);
+            } else {
+                column1.setMaxLines(Integer.MAX_VALUE);
+                column2.setMaxLines(Integer.MAX_VALUE);
+            }
         }
 
         private void setFont(TextView v) {

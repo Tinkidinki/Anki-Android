@@ -1363,10 +1363,12 @@ public class CardBrowser extends NavigationDrawerActivity implements
         Timber.d("COLUMN 1 ID = %d", R.id.card_sfld);
         if (truncate.getTitle() == "Truncate") {
             mIsTruncated = true;
+            mCardsAdapter.notifyDataSetChanged();
             truncate.setTitle("Expand");
 
         } else {
             mIsTruncated = false;
+            mCardsAdapter.notifyDataSetChanged();
             truncate.setTitle("Truncate");
         }
 

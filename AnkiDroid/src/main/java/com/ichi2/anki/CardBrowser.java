@@ -1360,16 +1360,19 @@ public class CardBrowser extends NavigationDrawerActivity implements
 
     void onTruncate(){
         MenuItem truncate = mActionBarMenu.findItem(R.id.action_truncate);
-        Timber.d("COLUMN 1 ID = %d", R.id.card_sfld);
-        if (truncate.getTitle() == "Truncate") {
+        Timber.d("TRUNCATE IS CALLED");
+        Timber.d("TRUNCATE TITLE = %s", truncate.getTitle());
+        if (truncate.getTitle() == getResources().getString(R.string.card_browser_truncate)) {
+            Timber.d("IS TITLE GETS CALLED");
             mIsTruncated = true;
             mCardsAdapter.notifyDataSetChanged();
-            truncate.setTitle("Expand");
+            truncate.setTitle(getResources().getString(R.string.card_browser_expand));
 
         } else {
+            Timber.d("ELSE IS CALLED");
             mIsTruncated = false;
             mCardsAdapter.notifyDataSetChanged();
-            truncate.setTitle("Truncate");
+            truncate.setTitle(getResources().getString(R.string.card_browser_truncate));
         }
 
     }
